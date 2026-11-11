@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DC Interview Essentials | Data Center Training & Questions</title>
+<style>
+:root {
+  --bg: #0a0e17;
+  --card: #141a2a;
+  --accent: #00d4ff;
+  --accent2: #7c4dff;
+  --text: #e8eaf0;
+  --muted: #8b95a8;
+  --success: #00c853;
+  --danger: #ff5252;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+header {
+  background: linear-gradient(135deg, #0d1424 0%, #1a2744 100%);
+  padding: 2rem 1.5rem 3rem;
+  text-align: center;
+  border-bottom: 1px solid #1e2a44;
+}
+header h1 {
+  font-size: 2.4rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+header p { color: var(--muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+nav {
+  background: #0f1525;
+  padding: 0.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #1e2a44;
+}
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+}
+nav a:hover, nav a.active { background: #1e2a44; color: var(--accent); }
+main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+section { margin-bottom: 3rem; }
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+.card {
+  background: var(--card);
+  border: 1px solid #1e2a44;
+  border-radius: 12px;
+  padding: 1.4rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.card h3 { margin-bottom: 0.5rem; color: #fff; }
+.card p { color: var(--muted); font-size: 0.95rem; }
+.module-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.question {
+  background: var(--card);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border: 1px solid #1e2a44;
+}
+.q-header {
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+.q-header:hover { background: #1a2338; }
+.q-body { padding: 0 1.2rem 1.2rem; display: none; color: #c5cdd9; }
+.q-body.show { display: block; }
+.answer { background: #0d1f17; border-left: 3px solid var(--success); padding: 0.8rem; border-radius: 6px; margin-top: 0.5rem; }
+.redflag { background: #1f0d0d; border-left: 3px solid var(--danger); padding: 0.8rem; border-radius: 6px; margin-top: 0.5rem; }
+.quiz-container { background: var(--card); padding: 1.5rem; border-radius: 12px; }
+.option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: #1a2338;
+  border: 1px solid #2a3a5a;
+  color: var(--text);
+  padding: 0.8rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.option:hover { border-color: var(--accent); }
+.option.correct { background: #0d3a1f; border-color: var(--success); }
+.option.wrong { background: #3a0d0d; border-color: var(--danger); }
+.progress { height: 6px; background: #1e2a44; border-radius: 3px; margin: 1rem 0; }
+.progress-bar { height: 100%; background: var(--accent); border-radius: 3px; width: 0%; transition: width 0.3s; }
+.btn {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: #0a0e17;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.btn:hover { opacity: 0.9; }
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+  border-top: 1px solid #1e2a44;
+  margin-top: 2rem;
+}
+@media (max-width: 600px) {
+  header h1 { font-size: 1.8rem; }
+  nav { gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>DC Interview Essentials</h1>
+  <p>Train for data center technician, critical facilities, and operations interviews. Power paths, cooling, safety, real scenarios, and practice questions that match what hiring managers actually ask.</p>
+</header>
+<nav>
+  <a href="#modules">Modules</a>
+  <a href="#power">Power</a>
+  <a href="#cooling">Cooling</a>
+  <a href="#safety">Safety</a>
+  <a href="#questions">Question Bank</a>
+  <a href="#quiz">Practice Quiz</a>
+</nav>
+<main>
+<section id="modules">
+  <h2>Training Modules</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="module-icon">⚡</div>
+      <h3>Power Path & Redundancy</h3>
+      <p>Utility → ATS → Generator → UPS → PDU → Rack. N, N+1, 2N. What interviewers expect you to walk through cleanly.</p>
+    </div>
+    <div class="card">
+      <div class="module-icon">❄️</div>
+      <h3>Cooling & Airflow</h3>
+      <p>CRAC vs CRAH, hot/cold aisle, containment, PUE, hot spots, and what you check first when temps rise.</p>
+    </div>
+    <div class="card">
+      <div class="module-icon">🛡️</div>
+      <h3>Safety & Procedures</h3>
+      <p>LOTO, NFPA 70E, arc flash, ESD, MOP/SOP/EOP, escalation rules. Safety questions show up in almost every interview.</p>
+    </div>
+    <div class="card">
+      <div class="module-icon">🔧</div>
+      <h3>Troubleshooting Scenarios</h3>
+      <p>Breaker trips, UPS faults with load still up, unreachable hosts, cable tracing. Structured approach over guessing.</p>
+    </div>
+    <div class="card">
+      <div class="module-icon">🖥️</div>
+      <h3>IT / Hardware Track</h3>
+      <p>Rack & stack, hot-swap, fiber vs copper, labeling, remote hands, basic networking validation.</p>
+    </div>
+    <div class="card">
+      <div class="module-icon">📋</div>
+      <h3>Behavioral & STAR</h3>
+      <p>Outages you handled, safety stops, mistakes, escalation timing. Own the story.</p>
+    </div>
+  </div>
+</section>
+
+<section id="power">
+  <h2>Power Path Essentials</h2>
+  <div class="card">
+    <h3>The Power Chain (memorize this order)</h3>
+    <p><strong>Utility feed</strong> → Medium/low voltage switchgear & transformers → <strong>ATS</strong> (Automatic Transfer Switch) → Generator (backup) → <strong>UPS</strong> (bridges the transfer) → Distribution boards / PDUs → Rack PDUs / power strips → Server power supplies (dual-corded when possible).</p>
+    <p style="margin-top:1rem;"><strong>Redundancy:</strong></p>
+    <ul style="margin-left:1.2rem; color:var(--muted);">
+      <li><strong>N</strong> — Exactly the capacity needed. Single failure = outage.</li>
+      <li><strong>N+1</strong> — One spare. One failure or maintenance window is covered.</li>
+      <li><strong>2N</strong> — Fully mirrored systems. No shared components.</li>
+    </ul>
+    <p style="margin-top:1rem; color:var(--muted);">Strong answers name the stages, say what each does, and mention you confirm the redundant path before touching anything.</p>
+  </div>
+</section>
+
+<section id="cooling">
+  <h2>Cooling & Airflow</h2>
+  <div class="card">
+    <h3>Key Concepts</h3>
+    <p><strong>CRAC</strong> (Computer Room Air Conditioner) — Has its own compressor/refrigeration cycle.</p>
+    <p><strong>CRAH</strong> (Computer Room Air Handler) — No compressor; uses chilled water from a central plant + fans and coils.</p>
+    <p style="margin-top:0.8rem;"><strong>Hot aisle / cold aisle</strong> — Racks arranged so intakes face the cold aisle, exhausts face the hot aisle. Containment (curtains, panels, pods) prevents mixing and hot spots.</p>
+    <p style="margin-top:0.8rem;"><strong>PUE</strong> — Power Usage Effectiveness = Total facility power / IT equipment power. Lower is better. Good sites are in the 1.1–1.3 range depending on design and climate.</p>
+    <p style="margin-top:0.8rem; color:var(--muted);">When a rack is hot but room temp looks normal: check blanking panels, cable management blocking airflow, local containment, and the specific CRAH/CRAC serving that row.</p>
+  </div>
+</section>
+
+<section id="safety">
+  <h2>Safety First</h2>
+  <div class="card">
+    <h3>Non-Negotiables</h3>
+    <ul style="margin-left:1.2rem; color:var(--muted);">
+      <li><strong>Lockout/Tagout (LOTO)</strong> — OSHA 29 CFR 1910.147. Isolate, lock, tag, verify zero energy before work.</li>
+      <li><strong>NFPA 70E</strong> — Arc flash boundaries, PPE categories, approach boundaries.</li>
+      <li><strong>Test before touch</strong> — Never assume a circuit is dead.</li>
+      <li><strong>Escalation</strong> — Know your authorization limits. Call it early with clear data (rack ID, readings, time, what you’ve already checked).</li>
+      <li><strong>ESD</strong> — Ground yourself when handling server components.</li>
+    </ul>
+    <p style="margin-top:1rem;">Interviewers love candidates who talk about safety without being prompted.</p>
+  </div>
+</section>
+
+<section id="questions">
+  <h2>Sample Question Bank</h2>
+  <p style="color:var(--muted); margin-bottom:1rem;">Click any question to expand the model answer and what interviewers are listening for.</p>
+  <div id="question-list"></div>
+</section>
+
+<section id="quiz">
+  <h2>Practice Quiz</h2>
+  <div class="quiz-container" id="quiz">
+    <div class="progress"><div class="progress-bar" id="progress"></div></div>
+    <div id="quiz-content"></div>
+  </div>
+</section>
+</main>
+<footer>
+  <p>DC Interview Essentials — Built for people who actually want to walk in prepared.<br>Focus on judgment, safety, and clear communication. Not trivia.</p>
+</footer>
+
+<script>
+const questions = [
+  {
+    q: "Walk me through the power path from the utility to a server.",
+    a: "Utility supply into the building → switchgear/transformers → ATS (decides utility vs generator) → Generator as backup → UPS (carries the load during transfer) → distribution / PDUs → rack power strips → dual server power supplies. I always confirm which path is active and that the redundant feed is healthy before any work.",
+    red: "Starting at the rack and working backward, or saying the generator takes over instantly (that’s what the UPS is for)."
+  },
+  {
+    q: "What’s the difference between a CRAC and a CRAH?",
+    a: "CRAC has its own refrigeration cycle and compressor. CRAH is an air handler — no compressor — that uses chilled water from a central plant plus fans and coils. Many larger sites use CRAHs fed by a central chilled-water plant.",
+    red: "Mixing them up or not knowing that CRAH relies on the chilled-water system."
+  },
+  {
+    q: "A UPS is showing a fault but the servers on that circuit are still running. What do you do?",
+    a: "Confirm the load is still on the redundant path / other UPS. Check the UPS alarm details and bypass status. Verify at the PDU metering, not by guess. Do not touch the failed UPS until the load is confirmed safe. Escalate with rack IDs, feed info, time, and readings.",
+    red: "Immediately opening the UPS or transferring load without confirming redundancy."
+  },
+  {
+    q: "Explain hot aisle / cold aisle containment.",
+    a: "Racks are oriented so cold air is supplied to the front (intake) and hot exhaust goes out the back. Containment (curtains, panels, or enclosed pods) keeps the cold supply and hot return from mixing. This improves efficiency and prevents hot spots.",
+    red: "Saying ‘it just keeps the room cool’ without mentioning separation of supply and return air."
+  },
+  {
+    q: "What do N, N+1, and 2N mean?",
+    a: "N is exactly the capacity the load needs. N+1 adds one spare unit so a single failure or maintenance doesn’t take the load down. 2N is a fully mirrored second system with no shared components. In N+1 or 2N, a single failure is a planned recoverable event.",
+    red: "Confusing the terms or not connecting them to actual failure/maintenance scenarios."
+  },
+  {
+    q: "How do you handle lockout/tagout?",
+    a: "Identify all energy sources, notify affected people, shut down and isolate, apply locks and tags, verify zero energy with appropriate test equipment, then perform the work. Only the person who applied the lock removes it. Follow the site’s written procedure every time.",
+    red: "Skipping the verify-zero-energy step or treating LOTO as optional."
+  },
+  {
+    q: "A server is unreachable. Walk me through your troubleshooting.",
+    a: "Confirm the ticket and symptoms. Check power lights and PDU metering for that outlet. Check network link lights at the server and ToR switch. Try console/iDRAC/iLO if available. Verify cable seating and labels. Document what you checked and escalate with clear data if it’s outside your scope.",
+    red: "Jumping straight to swapping hardware without basic checks."
+  },
+  {
+    q: "What is PUE and what is a good number?",
+    a: "Power Usage Effectiveness = total facility power divided by IT equipment power. It measures overhead. Modern efficient sites target 1.1–1.3 depending on design, climate, and load. Lower is better.",
+    red: "Not knowing the formula or treating any number under 2 as excellent."
+  }
+];
+
+function renderQuestions() {
+  const container = document.getElementById('question-list');
+  questions.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.innerHTML = `
+      <div class="q-header" onclick="this.nextElementSibling.classList.toggle('show')">
+        <span>${i+1}. ${item.q}</span>
+        <span>+</span>
+      </div>
+      <div class="q-body">
+        <div class="answer"><strong>Strong answer:</strong><br>${item.a}</div>
+        <div class="redflag"><strong>Red flag:</strong><br>${item.red}</div>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+let current = 0;
+let score = 0;
+const quizQuestions = questions.slice(0, 6).map(q => ({
+  q: q.q,
+  options: generateOptions(q)
+}));
+
+function generateOptions(item) {
+  const correct = item.a.split('.')[0];
+  return [
+    { text: correct, correct: true },
+    { text: "Start at the rack and work outward — the utility is someone else’s problem.", correct: false },
+    { text: "Immediately transfer the load and open the equipment.", correct: false },
+    { text: "Ignore the alarm if the servers are still up.", correct: false }
+  ].sort(() => Math.random() - 0.5);
+}
+
+function renderQuiz() {
+  const content = document.getElementById('quiz-content');
+  if (current >= quizQuestions.length) {
+    content.innerHTML = `
+      <h3>Quiz Complete</h3>
+      <p>You scored <strong>${score} / ${quizQuestions.length}</strong></p>
+      <p style="color:var(--muted); margin-top:0.5rem;">Review the expanded answers above and practice saying them out loud. Timing yourself to under two minutes is a good drill.</p>
+      <button class="btn" onclick="restartQuiz()">Try Again</button>
+    `;
+    return;
+  }
+  const q = quizQuestions[current];
+  document.getElementById('progress').style.width = ((current / quizQuestions.length) * 100) + '%';
+  content.innerHTML = `
+    <h3>Question ${current + 1} of ${quizQuestions.length}</h3>
+    <p style="margin:1rem 0; font-size:1.1rem;">${q.q}</p>
+    ${q.options.map((opt, i) => `<button class="option" onclick="selectOption(this, ${opt.correct})">${opt.text}</button>`).join('')}
+  `;
+}
+
+function selectOption(btn, correct) {
+  const buttons = document.querySelectorAll('#quiz-content .option');
+  buttons.forEach(b => b.disabled = true);
+  if (correct) {
+    btn.classList.add('correct');
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    buttons.forEach(b => {
+      if (b.onclick.toString().includes('true')) b.classList.add('correct');
+    });
+  }
+  setTimeout(() => {
+    current++;
+    renderQuiz();
+  }, 900);
+}
+
+function restartQuiz() {
+  current = 0;
+  score = 0;
+  renderQuiz();
+}
+
+renderQuestions();
+renderQuiz();
+</script>
+</body>
+</html>
